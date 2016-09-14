@@ -4,6 +4,18 @@
 
 #include "push_swap.h"
 
+static Uint32   get_rainbow_color(int i)
+{
+    int r, g, b;
+    const float frequency = 0.01f;
+    const int	n = WIN_HEIGHT / (i + 0.0001f);
+
+    r = (int)(sinf(frequency * i + 0) * 127 + 128);
+    g = (int)(sinf(frequency * i + 2) * 127 + 128);
+    b = (int)(sinf(frequency * i + 4) * 127 + 128);
+    return ((Uint32 )((r << 16) + (g << 8) + b));
+}
+
 # define LINEAR_CONVERSION(X, x1, x2, y1, y2) (((float)((X - x1) * (y2 - y1)) / (x2 - x1)) + y1)
 
 void process_list(t_pile *p)
@@ -16,6 +28,7 @@ void process_list(t_pile *p)
 	while (tmp)
 	{ 
 		tmp->size = LINEAR_CONVERSION(tmp->nb, get_env()->smallest, get_env()->biggest, min, max);
+		tmp->color = get_rainbow_color(tmp->size);
 		tmp = tmp->next;
 	}
 }

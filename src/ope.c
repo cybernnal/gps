@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ope.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbillard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rdantzer <rdantzer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/13 17:55:33 by tbillard          #+#    #+#             */
-/*   Updated: 2016/05/18 20:18:25 by tbillard         ###   ########.fr       */
+/*   Updated: 2016/09/13 00:24:49 by rdantzer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int		pa(t_env *env)
 	if (env->flag & 2)
 		ft_printlst_p(env->p1);
 	env->op++;
-	process_list(get_env()->p1);
-	process_list(get_env()->p2);
+	// process_list(get_env()->p1);
+	// process_list(get_env()->p2);
 	render(get_env()->p1, get_env()->p2);
 	return (1);
 }
@@ -68,8 +68,8 @@ int		pb(t_env *env)
 	if (env->flag & 2)
 		ft_printlst_p(env->p1);
 	env->op++;
-	process_list(get_env()->p1);
-	process_list(get_env()->p2);
+	// process_list(get_env()->p1);
+	// process_list(get_env()->p2);
 	render(get_env()->p1, get_env()->p2);
 	return (1);
 }
@@ -87,8 +87,8 @@ int		ra(t_env *env)
 	if (env->flag & 2)
 		ft_printlst_p(env->p1);
 	env->op++;
-	process_list(get_env()->p1);
-	process_list(get_env()->p2);
+	// process_list(get_env()->p1);
+	// process_list(get_env()->p2);
 	render(get_env()->p1, get_env()->p2);
 	return (1);
 }
@@ -108,8 +108,8 @@ int		rra(t_env *env)
 	if (env->flag & 2)
 		ft_printlst_p(env->p1);
 	env->op++;
-	process_list(get_env()->p1);
-	process_list(get_env()->p2);
+	// process_list(get_env()->p1);
+	// process_list(get_env()->p2);
 	render(get_env()->p1, get_env()->p2);
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbillard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rdantzer <rdantzer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 13:46:15 by tbillard          #+#    #+#             */
-/*   Updated: 2016/05/20 21:34:14 by tbillard         ###   ########.fr       */
+/*   Updated: 2016/09/13 02:16:00 by rdantzer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	end(t_env *env)
 #include <signal.h>
 void     sig(int signal)
 {
+	exit(EXIT_FAILURE);
     return ;
 }
 int		main(int argc, char **argv)
@@ -110,13 +111,14 @@ int		main(int argc, char **argv)
 	render(get_env()->p1, get_env()->p2);
 	if (env->flag & 32)
 		sort_round(env);
-	if (env->flag & 64)
+	else if (env->flag & 64)
 		sort_quick(env);
-	if (is_sort(env->p1, env->first1))
+	else if (is_sort(env->p1, env->first1))
 	{
 		exept(env, argc);
 		algo(env, argc);
 	}
+	sleep(5);
 	end(env);
 	free_lst(env->p1);
 	ft_printf("min: %d, max: %d \n", env->min, env->max);
