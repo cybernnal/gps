@@ -76,7 +76,7 @@ static void draw_rectangle(t_window *w, t_pile *node, int offset, int pile)
         // y = node->size;
         // if ((node->next && node->next->size > node->size) || !node->next)
         // {
-            drawcircle(1400, WIN_HEIGHT / 2, LINEAR_CONVERSION(x, 0, get_env()->total_size, 0, WIN_HEIGHT / 2), node->color, w);
+            drawcircle(WIN_WIDTH - WIN_HEIGHT / 2, WIN_HEIGHT / 2, LINEAR_CONVERSION(x, 0, get_env()->total_size, 0, WIN_HEIGHT / 2), node->color, w);
         // }
         // draw_pixel(x, y + 1, (255 << 16) + (255 << 8) + 255, w);
     }
@@ -85,7 +85,7 @@ static void draw_rectangle(t_window *w, t_pile *node, int offset, int pile)
         y = WIN_HEIGHT - node->size + 1;
         // if ((node->next && node->next->size > node->size) || !node->next)
         // {
-                drawcircle(600, WIN_HEIGHT / 2, LINEAR_CONVERSION(x, 0, get_env()->total_size, 0, WIN_HEIGHT / 2), node->color, w);
+                drawcircle(WIN_HEIGHT / 2, WIN_HEIGHT / 2, LINEAR_CONVERSION(x, 0, get_env()->total_size, 0, WIN_HEIGHT / 2), node->color, w);
         // }
         // draw_pixel(x, y - 1 , (255 << 16) + (255 << 8) + 255, w);
     }
