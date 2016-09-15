@@ -6,7 +6,7 @@
 /*   By: rdantzer <rdantzer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 18:42:17 by tbillard          #+#    #+#             */
-/*   Updated: 2016/09/13 00:37:56 by rdantzer         ###   ########.fr       */
+/*   Updated: 2016/09/15 15:56:46 by tbillard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../ft_printf/include/ft_printf.h"
 //#include <sdl2/sdl.h>
-#include "SDL2/SDL.h"
+#include "SDL.h"
 #define WIN_WIDTH   2000
 #define WIN_HEIGHT  1000
 

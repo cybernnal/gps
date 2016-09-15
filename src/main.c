@@ -6,7 +6,7 @@
 /*   By: rdantzer <rdantzer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 13:46:15 by tbillard          #+#    #+#             */
-/*   Updated: 2016/09/13 02:16:00 by rdantzer         ###   ########.fr       */
+/*   Updated: 2016/09/15 17:31:48 by tbillard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,24 @@ void	opt(t_env *env, int *argc, char ***argv)
 	}
 	opt3(env, argc, argv);
 	opt2(env, argc, argv);
+	if (!ft_strcmp((*argv)[1], "-g1"))
+	{
+		env->flag |= 256;
+		(*argv)++;
+		(*argc)--;
+	}
+	if (!ft_strcmp( ( *argv)[1], "-g2"))
+	{ 
+		env->flag |= 512;
+		( *argv)++;
+		( *argc)--;
+	}
+	if (!ft_strcmp( ( *argv)[1], "-g3"))
+	{ 
+		env->flag |= 1024;
+		( *argv)++;
+		( *argc)--;
+	}
 }
 
 void	init(t_env *env)
@@ -85,7 +103,7 @@ void	end(t_env *env)
 void     sig(int signal)
 {
 	exit(EXIT_FAILURE);
-    return ;
+	return ;
 }
 int		main(int argc, char **argv)
 {
@@ -95,7 +113,6 @@ int		main(int argc, char **argv)
 	if (argc == 1 || (argv[argc - 1][0] == '-' && (argv[argc - 1][1] < '0'
 					|| argv[argc - 1][1] > '9')))
 		return (0);
-    signal(11, &sig);
 	init(env);
 	opt(env, &argc, &argv);
 	if (argc == 1)
@@ -118,9 +135,10 @@ int		main(int argc, char **argv)
 		exept(env, argc);
 		algo(env, argc);
 	}
-	sleep(5);
 	end(env);
-	free_lst(env->p1);
+	free_lst(&env->p1);
 	ft_printf("min: %d, max: %d \n", env->min, env->max);
+	char c;
+	read(1, &c, 1);
 	return (0);
 }
