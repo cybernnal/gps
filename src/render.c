@@ -57,42 +57,28 @@ static void render_pile( t_window *w, t_pile *p, int offset)
     int         y0;
     int         rad;
     int tt = offset;
-    int circ = 0;
-    int is = 0;
-    int mod;
+    int circ = NB_CIRCLE;
 
     rad = WIN_WIDTH / NB_CIRCLE / 2;
-    y0 = WIN_HEIGHT / 2;
-    if (rad * 2 <= WIN_HEIGHT / 2)
-    {
-  //      rad = WIN_WIDTH / 4;
-        y0 = WIN_HEIGHT / 4;
-        is = 1;
-    }
+    if (rad  < WIN_HEIGHT / 4)
+        rad *= 2;
+    y0 = WIN_HEIGHT / 4;
     x0 = WIN_WIDTH / (NB_CIRCLE + 1);
     if (total == 0)
         total = get_env()->total_size;
-    mod = rad * 2 / WIN_HEIGHT;
-    while (mod)
+    while (circ)
     {
-        while (circ < NB_CIRCLE)
+        while (tmp)
         {
-            while (tmp)
-            {
-                width = 2 * RADIUS_MAX * NB_CIRCLE;
-                drawcircle((rad * circ * 2) - rad, y0, (int) LINEAR_CONVERSION(offset, 0, total, 0, rad), tmp->color,
-                           w);
-                ++offset;
-                tmp = tmp->next;
-            }
-            // if (is == 1 && circ == NB_CIRCLE / 2)
-            //   y0 = WIN_HEIGHT - y0;
-            ++circ;
-            tmp = p;
-            offset = tt;
+            width = 2 * RADIUS_MAX * NB_CIRCLE;
+            drawcircle((rad * circ * 2) - rad, y0, (int) LINEAR_CONVERSION(offset, 0, total, 0, rad), tmp->color, w);
+            ++offset;
+            tmp = tmp->next;
         }
-        mod --;
-        y0 = WIN_HEIGHT - y0;
+       // y0 *= 2;
+        --circ;
+        tmp = p;
+        offset = tt;
     }
     /*
     tmp = p;
