@@ -6,7 +6,7 @@
 #    By: tbillard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/23 16:24:51 by tbillard          #+#    #+#              #
-#    Updated: 2016/05/23 16:24:52 by tbillard         ###   ########.fr        #
+#    Updated: 2016/10/26 18:26:32 by tbillard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,7 @@ SRC =	src/main.c \
 	src/sort.c \
 	src/dbl.c \
 	src/list.c \
-	src/tools.c \
 	src/ope.c \
-	src/check_sort.c \
-	src/qs_tools.c \
-	src/litle_ft.c \
-	src/print.c \
-	src/cut.c \
-	src/freelst.c \
 	src/init.c\
 	src/render.c\
 
@@ -36,7 +29,7 @@ LIB_PATH = ft_printf/ #-L/usr/local/lib/ -lSDL2
 
 OBJ = $(SRC:.c=.o)
 
-FLAG =# -Wall -Wextra -Werror
+FLAG = -O3 -Ofast
 
 CC = gcc
 

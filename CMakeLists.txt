@@ -1,0 +1,105 @@
+cmake_minimum_required(VERSION 3.5)
+project(psyc)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
+set(SOURCE_FILES
+    ft_printf/include/ft_printf.h
+    ft_printf/include/libft.h
+    ft_printf/src/bonus_tools.c
+    ft_printf/src/chartools.c
+    ft_printf/src/fc_norm.c
+    ft_printf/src/flag.c
+    ft_printf/src/ft_atoi.c
+    ft_printf/src/ft_bzero.c
+    ft_printf/src/ft_countchiffres.c
+    ft_printf/src/ft_freetab.c
+    ft_printf/src/ft_isalnum.c
+    ft_printf/src/ft_isalpha.c
+    ft_printf/src/ft_isascii.c
+    ft_printf/src/ft_isdigit.c
+    ft_printf/src/ft_isnb.c
+    ft_printf/src/ft_isprint.c
+    ft_printf/src/ft_itoa.c
+    ft_printf/src/ft_itoamax.c
+    ft_printf/src/ft_lstadd.c
+    ft_printf/src/ft_memalloc.c
+    ft_printf/src/ft_memccpy.c
+    ft_printf/src/ft_memchr.c
+    ft_printf/src/ft_memcmp.c
+    ft_printf/src/ft_memcpy.c
+    ft_printf/src/ft_memdel.c
+    ft_printf/src/ft_memmove.c
+    ft_printf/src/ft_memset.c
+    ft_printf/src/ft_nbword.c
+    ft_printf/src/ft_norm.c
+    ft_printf/src/ft_print_tab.c
+    ft_printf/src/ft_printf.c
+    ft_printf/src/ft_printlst.c
+    ft_printf/src/ft_putchar.c
+    ft_printf/src/ft_putchar_fd.c
+    ft_printf/src/ft_putendl.c
+    ft_printf/src/ft_putendl_fd.c
+    ft_printf/src/ft_putnbr.c
+    ft_printf/src/ft_putnbr_fd.c
+    ft_printf/src/ft_putstr.c
+    ft_printf/src/ft_putstr_fd.c
+    ft_printf/src/ft_snprintf.c
+    ft_printf/src/ft_spe_l.c
+    ft_printf/src/ft_specif.c
+    ft_printf/src/ft_specif_bonus.c
+    ft_printf/src/ft_specif_ld.c
+    ft_printf/src/ft_specif_nb.c
+    ft_printf/src/ft_specif_nb2.c
+    ft_printf/src/ft_specif_o.c
+    ft_printf/src/ft_sprintf.c
+    ft_printf/src/ft_sqrt.c
+    ft_printf/src/ft_strcat.c
+    ft_printf/src/ft_strchr.c
+    ft_printf/src/ft_strclr.c
+    ft_printf/src/ft_strcmp.c
+    ft_printf/src/ft_strcpy.c
+    ft_printf/src/ft_strdel.c
+    ft_printf/src/ft_strdup.c
+    ft_printf/src/ft_strdupnfree.c
+    ft_printf/src/ft_strequ.c
+    ft_printf/src/ft_striter.c
+    ft_printf/src/ft_striteri.c
+    ft_printf/src/ft_strjoin.c
+    ft_printf/src/ft_strlcat.c
+    ft_printf/src/ft_strlen.c
+    ft_printf/src/ft_strmap.c
+    ft_printf/src/ft_strmapi.c
+    ft_printf/src/ft_strncat.c
+    ft_printf/src/ft_strncmp.c
+    ft_printf/src/ft_strncpy.c
+    ft_printf/src/ft_strnequ.c
+    ft_printf/src/ft_strnew.c
+    ft_printf/src/ft_strnstr.c
+    ft_printf/src/ft_strrchr.c
+    ft_printf/src/ft_strrevchr.c
+    ft_printf/src/ft_strsplit.c
+    ft_printf/src/ft_strstr.c
+    ft_printf/src/ft_strsub.c
+    ft_printf/src/ft_strtrim.c
+    ft_printf/src/ft_tolower.c
+    ft_printf/src/ft_toupper.c
+    ft_printf/src/get_type.c
+    ft_printf/src/init.c
+    ft_printf/src/ldtoa.c
+    ft_printf/src/parsing.c
+    ft_printf/src/tools.c
+    include/push_swap.h
+        src/dbl.c
+        src/init.c
+    src/list.c
+        src/main.c
+    src/ope.c
+        src/render.c
+        src/sort.c
+        )
+
+include_directories(ft_printf/include)
+include_directories(include)
+
+add_executable(psyc ${SOURCE_FILES})
