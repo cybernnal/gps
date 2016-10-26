@@ -13,12 +13,12 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../ft_printf/include/ft_printf.h"
+#include "libft.h"
 #include "SDL2/SDL.h"
-#define WIN_WIDTH   2400
-#define WIN_HEIGHT  1200
-#define RADIUS_MAX  250
-#define NB_CIRCLE   4
+#define WIN_WIDTH   1270
+#define WIN_HEIGHT  635
+//#define RADIUS_MAX  250
+#define NB_CIRCLE 4 // nombre pair
 
 typedef struct      s_window
 { 
@@ -41,6 +41,8 @@ typedef struct		s_pile
 
 typedef struct		s_env
 {
+    int             px;
+    int             py;
 	int				min;
 	int				max;
     int             biggest;
@@ -64,5 +66,6 @@ int					ft_error(void);
 int					dblon(int argc, char **argv, t_env *env);
 t_pile				*get_last(t_pile *p1, int n);
 int					ra(t_env *env);
+int		rra(t_env *env);
 
 #endif

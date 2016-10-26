@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME = psy
 
 SRC =	src/main.c \
 	src/sort.c \
@@ -20,12 +20,10 @@ SRC =	src/main.c \
 	src/init.c\
 	src/render.c\
 
-INC = -I ./include/ $(shell sdl2-config --cflags ) -lm
+INC = -I ./include/ -I ./libft $(shell sdl2-config --cflags ) -lm
 
-#LIB = -L./libft -lft  $(shell sdl2-config --libs)
-#LIB_PATH = libft/
-LIB = ft_printf/libftprintf.a $(shell sdl2-config --libs)
-LIB_PATH = ft_printf/ #-L/usr/local/lib/ -lSDL2
+LIB = -L./libft -lft  $(shell sdl2-config --libs)
+LIB_PATH = libft/
 
 OBJ = $(SRC:.c=.o)
 
@@ -36,21 +34,19 @@ CC = gcc
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@make -C $(LIB_PATH)
 	@$(CC) $(FLAG) -o $(NAME) $(OBJ) $(LIB) $(INC)
-	@echo "push_swap created"
+	@echo "psy created"
 
 %.o: %.c
 	@$(CC) $(FLAG) $(INC) -o $@ -c $<
 
 clean:
 	@rm -f $(OBJ)
-	@make clean -C $(LIB_PATH)
-	@echo "push_swap cleaned"
+	@echo "psy cleaned"
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "push_swap deleted"
+	@echo "psy deleted"
 
 re: fclean all
 

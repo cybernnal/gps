@@ -18,6 +18,8 @@ void	init(t_env *env)
 	env->p2 = NULL;
 	env->first1 = NULL;
     env->flag = 0;
+    env->py = 5;
+    env->px = 10;
 }
 
 t_env    *get_env()
