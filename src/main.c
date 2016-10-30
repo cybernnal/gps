@@ -43,6 +43,7 @@ void	opt(t_env *env, int *argc, char ***argv)
 		ft_printf("elements).\n\t'-bs': buble sort (par default pour les ");
 		ft_printf("listes inferieures a 80 elements et les listes reversed ");
 		ft_printf("(ou presque)).\n");
+		ft_printf("'-g[1;2;3]': Affiche des représentations graphique differente en fonction du chiffre.\n");
 		exit(0);
 	}
 	opt3(env, argc, argv);
