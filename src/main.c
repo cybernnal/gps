@@ -99,12 +99,6 @@ void	end(t_env *env)
 	}
 }
 
-#include <signal.h>
-void     sig(int signal)
-{
-	exit(EXIT_FAILURE);
-	return ;
-}
 int		main(int argc, char **argv)
 {
 	t_env		*env;
@@ -115,8 +109,6 @@ int		main(int argc, char **argv)
 		return (0);
 	init(env);
 	opt(env, &argc, &argv);
-	if (argc == 1)
-		return (0);
 	sig_flag(env, 1);
 	if (dblon(argc, argv, env) == -1 || build_lst(env, argc) == -1)
 		return (ft_error());

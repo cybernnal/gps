@@ -36,7 +36,7 @@ LIB_PATH = ft_printf/ #-L/usr/local/lib/ -lSDL2
 
 OBJ = $(SRC:.c=.o)
 
-FLAG =# -Wall -Wextra -Werror
+FLAG = -O3# -Wall -Wextra -Werror
 
 CC = gcc
 

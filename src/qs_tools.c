@@ -39,17 +39,6 @@ void		qs_whle(t_env *env, t_pile *ftmp, int k, int i)
 	}
 }
 
-void		rab(t_pile **p, t_pile **f)
-{
-	t_pile *tmp;
-
-	(*f) = (*f)->next;
-	tmp = get_last(*p, 0);
-	tmp->next = (*p);
-	(*p)->next = NULL;
-	(*p) = (*f);
-}
-
 int			is_round_sort(t_pile *p)
 {
 	t_pile	*f;
@@ -84,18 +73,4 @@ int			find_nb(t_pile *p, int j)
 	if (k > i / 2)
 		return (1);
 	return (0);
-}
-
-void		qs_opt(t_env *env)
-{
-	if (env->p1->qs == 1)
-	{
-		ra(env);
-		if (env->p1->qs == 0 && env->p1->next->qs == 1)
-		{
-			env->p1->next->qs = 1;
-			ra(env);
-			ra(env);
-		}
-	}
 }

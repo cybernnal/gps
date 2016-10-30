@@ -1,9 +1,4 @@
-//
-// Created by Raphaël Dantzer on 11/09/16.
-//
-
 #include <time.h>
-#include <sys/time.h>
 #include "push_swap.h"
 
 static void key_handler(SDL_Event event)
@@ -15,36 +10,11 @@ static void key_handler(SDL_Event event)
 	}
 }
 
-static int  get_list_size(t_pile *p)
-{
-	t_pile  *tmp;
-	int     size;
-
-	size = 0;
-	tmp = p;
-	while (tmp != NULL)
-	{
-		size++;
-		tmp = tmp->next;
-	}
-	return (size);
-}
-
 static void draw_pixel(int x, int y, Uint32 color, t_window *w)
 {
 	w->img_ptr[WIN_WIDTH * y + x] = color;
 }
-/*
-   void drawsquare(int x0, int y0, int radius, Uint32 color, t_window *w)
-   {
-   int x = radius;
-   int y = 0;
-   int err = 0;
 
-   while
-   draw_pixel(x0 + x, y0 + y, color, w);
-   }
- */
 void drawcircle(int x0, int y0, int radius, Uint32 color, t_window *w)
 {
 	int x = radius;
@@ -117,9 +87,7 @@ static void drawpyra(int x0, int y0, t_pile *pile, t_window *w, int offset)
 			if (y > 0)
 				draw_pixel(x + x0, y + y0, pile->color, w);
 			if (x != -offset/2 || x != offset/2 || y != -offset/2)
-				y = -offset/2;
-			//if (x != -offset/2 || x != offset/2)
-			//	y -= offset;
+				break ;
 			else
 				y--;
 		}
@@ -135,17 +103,7 @@ static void drawpyra2b(int x0, int y0, t_pile *pile, t_window *w, int offset)
 	while (x <= offset/2)
 	{
 		y = -offset/2;
-	//	while (y >= -offset/2)
-	//	{
-	//		if (y < 0)
 				draw_pixel(x + x0, y + y0, pile->color, w);
-	//		if (x != -offset/2 || x != offset/2 || y != -offset/2)
-	//			y -= -offset;
-	//		else
-	//			y--;
-//			if (x != -offset/2 || x != offset/2)
-//				y -= offset;
-//		}
 		x++;
 	}
 }
@@ -158,15 +116,7 @@ static void drawpyra2(int x0, int y0, t_pile *pile, t_window *w, int offset)
 	while (x <= offset/2)
 	{
 		y = offset/2;
-	//	while (y >= -offset/2)
-	//	{
-			//if (y > 0)
 				draw_pixel(x + x0, y + y0, pile->color, w);
-			//if (x != -offset/2 || x != offset/2 || y != -offset/2)
-			//	y -= offset;
-			//else
-			//	y--;
-	//	}
 		x++;
 	}
 }
@@ -183,9 +133,6 @@ static void draw_rectangle(t_window *w, t_pile *node, int offset, int pile)
 	x = offset;
 	if (pile)
 	{
-		// y = node->size;
-		// if ((node->next && node->next->size > node->size) || !node->next)
-		// {;
 		if (get_env()->flag & 256)
 			drawsquare(WIN_WIDTH - WIN_HEIGHT / 2, WIN_HEIGHT / 2, node, w,LINEAR_CONVERSION(x, 0, get_env()->total_size, 0, WIN_HEIGHT / 2));
 		else if (get_env()->flag & 512)
@@ -194,15 +141,10 @@ static void draw_rectangle(t_window *w, t_pile *node, int offset, int pile)
 			drawpyra2b(WIN_WIDTH / 2, WIN_HEIGHT / 2, node, w,LINEAR_CONVERSION(x, 0, get_env()->total_size, 0, WIN_HEIGHT - 10));
 		else
 			drawcircle(WIN_WIDTH - WIN_HEIGHT / 2, WIN_HEIGHT / 2, LINEAR_CONVERSION(x, 0, get_env()->total_size, 0, WIN_HEIGHT / 2), node->color, w);
-		// }
-		// draw_pixel(x, y + 1, (255 << 16) + (255 << 8) + 255, w);
 	}
 	else
 	{
 		y = WIN_HEIGHT - node->size + 1;
-		// if ((node->next && node->next->size > node->size) || !node->next)
-		// {
-		//        drawcircle(WIN_HEIGHT / 2, WIN_HEIGHT / 2, LINEAR_CONVERSION(x, 0, get_env()->total_size, 0, WIN_HEIGHT / 2), node->color, w);
 		if (get_env()->flag & 256)
 			drawsquare(WIN_HEIGHT / 2, WIN_HEIGHT / 2, node, w, LINEAR_CONVERSION(x, 0, get_env()->total_size, 0, WIN_HEIGHT / 2));
 		else if (get_env()->flag & 512)
@@ -211,33 +153,23 @@ static void draw_rectangle(t_window *w, t_pile *node, int offset, int pile)
 			drawpyra2(WIN_WIDTH / 2, WIN_HEIGHT / 2, node, w,LINEAR_CONVERSION(x, 0, get_env()->total_size, 0, WIN_HEIGHT - 10));
 		else
 		    drawcircle(WIN_HEIGHT / 2, WIN_HEIGHT / 2, LINEAR_CONVERSION(x, 0, get_env()->total_size, 0, WIN_HEIGHT / 2), node->color, w);
-		// }
-		// draw_pixel(x, y - 1 , (255 << 16) + (255 << 8) + 255, w);
 	}
 }
-static void render_pile( t_window *w, t_pile *p, int pile, int offset)
-{ 
-	if ( p && p->next)
-		render_pile( w, p->next, pile, offset + 1);
-	if ( p)
-		draw_rectangle( w, p, offset + ( get_env( )->total_size < 800 ? 1 : 0), pile);
-}
-/*
-   static void render_pile(t_window *w, t_pile *p, int pile)
-   {
-   int             offset;
 
-   t_pile *tmp = p;
-   offset = -1;
-   if (!tmp)
-   return ;
-   while (tmp)
-   {
-   draw_rectangle(w, tmp, offset++ + (get_env()->total_size < 800 ? 1 : 0), pile);
-   tmp = tmp->next;
-   }
-   }
- */
+static void render_pile(t_window *w, t_pile *p, int pile)
+{
+    int             offset;
+    t_pile *tmp = p;
+    offset = -1;
+    if (!tmp)
+        return ;
+    while (tmp)
+    {
+        draw_rectangle(w, tmp, offset++ + (get_env()->total_size < 800 ? 1 : 0), pile);
+        tmp = tmp->next;
+    }
+}
+
 void        render(t_pile *a, t_pile *b) {
 	static t_window w;
 	(void) b;
@@ -250,10 +182,8 @@ void        render(t_pile *a, t_pile *b) {
 	bzero(w.img_ptr, sizeof(Uint32) * WIN_HEIGHT * WIN_WIDTH);
 	while (SDL_PollEvent(&w.event))
 		key_handler(w.event);
-	// get_env()->a_size = get_list_size(a);
-	// get_env()->b_size = get_list_size(b);
-	render_pile(&w, a, 0, 0);
-	render_pile(&w, b, 1, 0);
+	render_pile(&w, a, 0);
+	render_pile(&w, b, 1);
 	SDL_UpdateTexture(w.image, NULL, w.img_ptr, WIN_WIDTH * sizeof(Uint32));
 	SDL_RenderCopy(w.renderer, w.image, NULL, NULL);
 	SDL_RenderPresent(w.renderer);

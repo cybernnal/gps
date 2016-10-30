@@ -1,7 +1,3 @@
-//
-// Created by Raphaël Dantzer on 11/09/16.
-//
-
 #include "push_swap.h"
 
 static Uint32   get_rainbow_color(int i)
@@ -49,6 +45,4 @@ void        init_window(t_window *window)
 	if (!(window->renderer = SDL_CreateRenderer(window->window, -1, SDL_RENDERER_ACCELERATED)))
 		exit(EXIT_FAILURE);
 	init_texture_renderer(window, WIN_WIDTH, WIN_HEIGHT);
-	window->step_x = WIN_WIDTH / get_env()->total_size;
-	window->step_y = WIN_HEIGHT / 4;
 }

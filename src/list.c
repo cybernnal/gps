@@ -31,29 +31,6 @@ int			addlst_p(t_pile **list, t_pile **first)
 	return (1);
 }
 
-int			addlst_start(t_pile **list, t_pile **first)
-{
-	t_pile *tmp;
-
-	if (!(*list))
-	{
-		if (!((*list) = (t_pile*)malloc(sizeof(t_pile))))
-			return (0);
-		(*list)->next = NULL;
-		(*first) = (*list);
-	}
-	else
-	{
-		if (!((*list)->next = (t_pile*)malloc(sizeof(t_pile))))
-			return (-1);
-		tmp = (*list)->next;
-		(*list)->next = NULL;
-		tmp->next = (*first);
-		(*first) = tmp;
-	}
-	return (1);
-}
-
 int			sig_flag(t_env *env, int i)
 {
 	static unsigned int	flag;
